@@ -1,4 +1,7 @@
 // app.js
+
+import './libs/weapp-cookie'
+
 App({
   onLaunch() {
     // 展示本地存储能力

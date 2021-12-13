@@ -6,7 +6,7 @@
   "setting": {
     "bundle": false,
     "userConfirmedBundleSwitch": false,
-    "urlCheck": true,
+    "urlCheck": false,
     "scopeDataCheck": false,
     "coverView": true,
     "es6": true,
@@ -34,7 +34,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "2.21.1",
-  "appid": "",
+  "appid": "wxb55c774621caebb4",
   "projectname": "wechat",
   "debugOptions": {
     "hidedInDevtools": []
