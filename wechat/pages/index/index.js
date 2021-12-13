@@ -2,6 +2,9 @@
 // 获取应用实例
 const app = getApp()
 
+// import rsa from '../../libs/jsencrypt-3.0.0-rc.1.js'
+import rsa from '../../libs/jsencrypt-3.2.1.min.js'
+
 Page({
   data: {
     motto: 'Hello World',
@@ -43,6 +46,32 @@ Page({
       console.log(res.data)
     }
   })
+ 
+  wx.request({
+     url: 'http://127.0.0.1:8080/rsa/get-public-key',
+     success(res) {
+       var publicKey = res.data.publicKey
+       console.log('公钥：', publicKey)
+       var encrypt = rsa.JSEncrypt
+       console.log(rsa)
+       encrypt.prototype.setPublicKey(publicKey);
+       var data = '你好，世界。'
+       console.log('加密前：', data)
+       var encrypt = encrypt.prototype.encrypt(data);
+       console.log('加密后：', encrypt)
+ 
+       wx.request({
+         url: 'http://127.0.0.1:8080/rsa/decrypt',
+         data: {
+           encrypt: encrypt
+         },
+         success(resp) {
+           console.log('后端解密：', resp.data)
+         }
+       })
+     }
+   })
+
 },
 
   getUserProfile(e) {
